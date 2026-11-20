@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
+      const isExpanded = nav.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', String(isExpanded));
       const icon = menuToggle.querySelector('i');
       if (icon) {
         icon.classList.toggle('fa-bars');
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
         const icon = menuToggle.querySelector('i');
         if (icon) {
           icon.classList.add('fa-bars');
@@ -160,26 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const toast = document.getElementById('notificationToast');
   const toastMessage = document.getElementById('toastMessage');
 
-  function showToast(message, isError = false) {
+  function showFormError(message) {
     if (!toast || !toastMessage) return;
 
     toastMessage.textContent = message;
-    const icon = toast.querySelector('i');
-    
-    if (isError) {
-      toast.style.borderColor = '#ef4444';
-      if (icon) {
-        icon.className = 'fas fa-exclamation-circle';
-        icon.style.color = '#ef4444';
-      }
-    } else {
-      toast.style.borderColor = 'var(--border-glow)';
-      if (icon) {
-        icon.className = 'fas fa-check-circle';
-        icon.style.color = '#10b981';
-      }
-    }
-
     toast.classList.add('show');
 
     setTimeout(() => {
@@ -199,30 +185,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('message').value.trim();
 
       if (!name || !email || !subject || !message) {
-        showToast('Please fill in all fields before sending.', true);
+        showFormError('Please fill in all fields before opening an email draft.');
         return;
       }
 
       // Email validation regex
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showToast('Please enter a valid email address.', true);
+        showFormError('Please enter a valid email address.');
         return;
       }
 
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      submitBtn.disabled = true;
-
-      // Simulate network request
-      setTimeout(() => {
-        showToast('Thank you! Your message has been sent successfully.');
-        contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }, 1500);
+      const emailLink = document.querySelector('.contact-info-list a[href^="mailto:"]');
+      toast?.classList.remove('show');
+      const body = `${message}\r\n\r\nFrom: ${name} (${email})`;
+      window.location.href = `${emailLink.href}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 
