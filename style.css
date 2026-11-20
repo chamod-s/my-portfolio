@@ -992,11 +992,12 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
 }
 
-/* Certifications & Achievements */
+/* Certifications */
 .certs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .cert-card {
@@ -1012,17 +1013,13 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-4px);
 }
 
-.cert-card.placeholder {
-  border-style: dashed;
-}
-
 .cert-icon {
   font-size: 2rem;
   color: #f59e0b;
   margin-bottom: 1rem;
 }
 
-.cert-card h4 {
+.cert-card h3 {
   font-size: 1.15rem;
   color: #ffffff;
   margin-bottom: 0.38rem;
@@ -1058,6 +1055,16 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.35rem;
   color: #ffffff;
   margin-bottom: 1.5rem;
+}
+
+.contact-form-note {
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.contact-form-note a {
+  text-decoration: underline;
 }
 
 .form-group {
@@ -1214,37 +1221,6 @@ textarea.form-control {
 
 .back-to-top:hover {
   transform: translateY(-4px);
-}
-
-/* Toast Notifications */
-.notification-toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  background: var(--bg-card-hover);
-  border: 1px solid #ef4444;
-  max-width: calc(100% - 4rem);
-  color: #ffffff;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.notification-toast i {
-  color: #ef4444;
-  font-size: 1.25rem;
-}
-
-.notification-toast.show {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 /* Responsive Styles */

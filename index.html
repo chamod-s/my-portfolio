@@ -568,35 +568,25 @@
     </div>
   </section>
 
-  <!-- Certifications & Achievements Section -->
+  <!-- Certifications Section -->
   <section id="certifications" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Certifications & Achievements</h2>
-      <p class="section-subtitle">Academic qualifications, professional certifications, and competitive recognitions</p>
-      
+      <h2 class="section-title">Certifications</h2>
+
       <div class="certs-grid">
-        
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-award"></i></div>
-          <h4>Diploma in English</h4>
+        <article class="cert-card">
+          <div class="cert-icon"><i class="fas fa-chart-column" aria-hidden="true"></i></div>
+          <h3>Harnessing the Power of Data with Power BI</h3>
+          <p class="cert-issuer">Microsoft &middot; Coursera</p>
+          <p class="cert-year"><time datetime="2026-09">September 2026</time></p>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+          <h3>Diploma in English</h3>
           <p class="cert-issuer">Sabaragamuwa University of Sri Lanka</p>
-          <p class="cert-year"><i class="far fa-calendar-alt"></i> Year: 2025</p>
-        </div>
-
-        <div class="cert-card placeholder">
-          <div class="cert-icon" style="color: var(--text-dark-muted);"><i class="fas fa-certificate"></i></div>
-          <h4>Certificate Slot #2</h4>
-          <p class="cert-issuer">Issuing Organization: To be updated</p>
-          <p class="cert-year"><i class="far fa-calendar-alt"></i> Year: —</p>
-        </div>
-
-        <div class="cert-card placeholder">
-          <div class="cert-icon" style="color: var(--text-dark-muted);"><i class="fas fa-trophy"></i></div>
-          <h4>Hackathons & Competitions</h4>
-          <p class="cert-issuer">Events & Honors</p>
-          <p class="cert-year"><i class="fas fa-info-circle"></i> Ready for future competition updates</p>
-        </div>
-
+          <p class="cert-year"><time datetime="2025">2025</time></p>
+        </article>
       </div>
     </div>
   </section>
@@ -611,16 +601,18 @@
         
         <!-- Contact Form -->
         <div class="contact-card">
-          <h3>Write an Email</h3>
-          <form id="contactForm" novalidate>
+          <h3>Send Me a Message</h3>
+          <form id="contactForm" action="https://formsubmit.co/cjsenarathne1234@gmail.com" method="post">
+            <input type="hidden" name="_subject" value="New message from your portfolio">
+            <input type="text" name="_honey" hidden tabindex="-1" autocomplete="off">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+              <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" autocomplete="name" required>
             </div>
             
             <div class="form-group">
               <label for="email">Your Email Address</label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required>
+              <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" autocomplete="email" required>
             </div>
             
             <div class="form-group">
@@ -634,8 +626,9 @@
             </div>
             
             <button type="submit" class="btn btn-primary" style="width: 100%;">
-              <i class="fas fa-envelope" aria-hidden="true"></i> Open Email Draft
+              <i class="fas fa-envelope" aria-hidden="true"></i> Send Message
             </button>
+            <p class="contact-form-note">Submissions are delivered through <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>.</p>
           </form>
         </div>
 
@@ -712,12 +705,6 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-  <!-- Notification Toast Container -->
-  <div class="notification-toast" id="notificationToast" role="status">
-    <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-    <span id="toastMessage"></span>
-  </div>
 
   <script src="script.js"></script>
 </body>
