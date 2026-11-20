@@ -602,7 +602,7 @@
         <!-- Contact Form -->
         <div class="contact-card">
           <h3>Send Me a Message</h3>
-          <form id="contactForm" action="https://formsubmit.co/cjsenarathne1234@gmail.com" method="post">
+          <form id="contactForm" action="https://formsubmit.co/cjsenarathne1234@gmail.com" data-ajax-action="https://formsubmit.co/ajax/cjsenarathne1234@gmail.com" method="post">
             <input type="hidden" name="_subject" value="New message from your portfolio">
             <input type="text" name="_honey" hidden tabindex="-1" autocomplete="off">
             <div class="form-group">
@@ -628,6 +628,7 @@
             <button type="submit" class="btn btn-primary" style="width: 100%;">
               <i class="fas fa-envelope" aria-hidden="true"></i> Send Message
             </button>
+            <p id="contactFormStatus" class="contact-form-status" role="status" aria-live="polite" hidden></p>
             <p class="contact-form-note">Submissions are delivered through <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>.</p>
           </form>
         </div>

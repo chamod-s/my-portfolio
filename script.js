@@ -10,6 +10,46 @@ document.addEventListener('DOMContentLoaded', () => {
     yearElement.textContent = new Date().getFullYear();
   }
 
+  // Contact Form Submission
+  const contactForm = document.getElementById('contactForm');
+  const contactFormStatus = document.getElementById('contactFormStatus');
+
+  if (contactForm && contactFormStatus) {
+    contactForm.addEventListener('submit', async event => {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+
+      submitButton.disabled = true;
+      contactFormStatus.hidden = false;
+      contactFormStatus.classList.remove('is-success', 'is-error');
+      contactFormStatus.textContent = 'Sending your message...';
+
+      try {
+        const response = await fetch(contactForm.dataset.ajaxAction, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' }
+        });
+        const result = await response.json();
+
+        if (!response.ok || (result.success !== true && result.success !== 'true')) {
+          throw new Error(result.message || 'The message could not be sent. Please try again.');
+        }
+
+        contactFormStatus.textContent = 'Your message has been sent. Thank you for getting in touch!';
+        contactFormStatus.classList.add('is-success');
+        contactForm.reset();
+      } catch (error) {
+        contactFormStatus.textContent = error.message || 'The message could not be sent. Please try again.';
+        contactFormStatus.classList.add('is-error');
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   // Loading Screen Handler
   const loadingScreen = document.getElementById('loadingScreen');
   if (loadingScreen) {
